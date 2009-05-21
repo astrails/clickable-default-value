@@ -13,21 +13,39 @@
  */
 
 (function($){
- $.fn.clickable_default_value = function(opts) {
+  $.fn.clickable_default_value = function(opts) {
+		var form_selector = this;
+		var form = $(this);
 
-			function set_text(el, text) {
-				if (!el.val() || "" == el.val()) {
-					el.val(text);
-				}
+		function set_text(el, text) {
+			if (!el.val() || "" == el.val()) {
+				el.val(text);
 			}
+		}
+
+		function clear_values() {
+			$.each($(form_selector + "[default-clickable]"), function() {
+				var el = $(this);
+				if (el.val() == el.attr("default-clickable")) {
+					el.val("");
+				}
+			});
+		}
+
+		if (opts == "clear") {
+			clear_values();
+			return;
+		}
 
     return this.each(function() {
-			var form = $(this);
-
+			var theform = form;
 			$.each(opts, function(i, e) {
 				var elem = $(e[0]);
 				var text = e[1];
 				set_text($(elem), text);
+
+				$(elem).attr("default-clickable", text);
+
 				$(elem).focus(function() {
 					if ($(this).val() == text) {
 						$(this).val("");
@@ -38,12 +56,7 @@
 			});
 
 			form.submit(function() {
-				$.each(opts, function(i, e) {
-					var el = $(e[0]);
-					if ($(e[0]).val() == e[1]) {
-						el.val("");
-					}
-				});
+				clear_values();
 				return true;
 			});
     });

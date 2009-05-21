@@ -5,6 +5,7 @@
 This jQuery plugin adds default values to form fields. If the field is focused, the value gets cleared. If the focus leaves the field and user left the value blank - field value will turn to default.
 
 Once the form is submitted the default values are replaced by empty string.
+
 == Usage
 clickable_default_value() gets an array of arrays, where internal arrays are pairs of element and default text
 
@@ -16,6 +17,13 @@ clickable_default_value() gets an array of arrays, where internal arrays are pai
     <script type="text/javascript">
       $(".some-form").clickable_default_value([["#name", "what is your name"], ["#email", "what is your email"]]);
     </script>
+  </body>
+
+== Rails and AJAX
+  If you use rails helpers like remote_form_for, the callbacks bound by the plugin will not be called. 
+  You need to add :before parameter to your form in order to cleanup default fields (haml exmaple).
+  <body>
+    - remote_form_for ..., :before => "$(".some_form").clickable_default_value('clear')"
   </body>
 
 == Copyright
