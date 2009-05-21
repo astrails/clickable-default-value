@@ -3,8 +3,7 @@
  * jQuery clickable default form values
  * version: 0.0.1
  * @requires: jQuery v1.2 or later
- * Licensed under the GPL license:
- *   http://www.gnu.org/licenses/gpl.html
+ * Licensed under the MIT license:
  *
  * Copyright 2009 Astrails Ltd
  *	http://astrails.com

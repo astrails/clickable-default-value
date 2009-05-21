@@ -1,0 +1,24 @@
+= clickable-default-value
+
+== Summary
+
+This jQuery plugin adds default values to form fields. If the field is focused, the value gets cleared. If the focus leaves the field and user left the value blank - field value will turn to default.
+
+Once the form is submitted the default values are replaced by empty string.
+== Usage
+clickable_default_value() gets an array of arrays, where internal arrays are pairs of element and default text
+
+  <body>
+    <form class=".some-form">
+      <input id="name" name="name" />
+      <input id="email" name="email" />
+    </form>
+    <script type="text/javascript">
+      $(".some-form").clickable_default_value([["#name", "what is your name"], ["#email", "what is your email"]]);
+    </script>
+  </body>
+
+== Copyright
+
+Copyright (c) 2009 Astrails Ltd. See LICENSE for details.
+Licensed under the MIT license.
